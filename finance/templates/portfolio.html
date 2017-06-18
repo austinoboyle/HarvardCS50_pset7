@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Potfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td><b>{{ totalAssets }}</b></td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for company in companies %}
+                <tr>
+                    <td>{{ dict[company]['symbol'] }}</td>
+                    <td>{{ dict[company]['name'] }}</td>
+                    <td>{{ dict[company]['shares'] }}</td>
+                    <td>${{ dict[company]['price'] }}</td>
+                    <td>${{ dict[company]['total'] }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{cash}}</td>
+            </tr>    
+        </tbody>
+        
+    </table>
+{% endblock %}
